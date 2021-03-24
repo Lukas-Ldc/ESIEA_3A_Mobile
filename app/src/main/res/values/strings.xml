@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ESIEA_Projet</string>
+    <string name="logo_bitcoin">Logo Bitcoin</string>
+    <string name="crypto_monnaies">Crypto-monnaies</string>
 </resources>
