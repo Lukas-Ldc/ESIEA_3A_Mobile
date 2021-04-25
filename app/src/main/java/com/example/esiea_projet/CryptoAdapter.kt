@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CryptoAdapter(private var dataSet: List<String>) :
+class CryptoAdapter(private var dataSet: List<Crypto>) :
         RecyclerView.Adapter<CryptoAdapter.ViewHolder>() {
 
 
@@ -17,7 +17,7 @@ class CryptoAdapter(private var dataSet: List<String>) :
         }
     }
 
-    fun updater(list: List<String>){
+    fun updater(list: List<Crypto>){
         dataSet = list
         notifyDataSetChanged()
     }
@@ -29,7 +29,8 @@ class CryptoAdapter(private var dataSet: List<String>) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView.text = dataSet[position]
+        val thecrypto = dataSet[position]
+        viewHolder.textView.text = thecrypto.name
     }
 
     override fun getItemCount() = dataSet.size
