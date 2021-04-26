@@ -11,5 +11,18 @@
         android:name="com.example.esiea_projet.CryptoListFragment"
         android:label="Crypto List"
         tools:layout="@layout/crypto_list">
+        <action
+            android:id="@+id/action_cryptolistfrag_to_cryptodetailfrag"
+            app:destination="@id/cryptodetailfrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cryptodetailfrag"
+        android:name="com.example.esiea_projet.CryptoDetailFragment"
+        android:label="Crypto Detail"
+        tools:layout="@layout/crypto_detail">
+        <action
+            android:id="@+id/action_cryptodetailfrag_to_cryptolistfrag"
+            app:destination="@id/cryptolistfrag" />
     </fragment>
 </navigation>

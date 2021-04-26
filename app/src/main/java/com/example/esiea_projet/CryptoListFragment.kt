@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -16,8 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CryptoListFragment : Fragment() {
 
     private lateinit var therecycler: RecyclerView
-    private val theadapter = CryptoAdapter(listOf())
-    private val thelayoutm = LinearLayoutManager(context)
+    private val theadapter = CryptoAdapter(listOf(), ::onClickCrypto)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.crypto_list, container, false)
@@ -27,7 +27,7 @@ class CryptoListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         therecycler = view.findViewById(R.id.rvCrypto)
-        therecycler.layoutManager = this.thelayoutm
+        therecycler.layoutManager = LinearLayoutManager(context)
         therecycler.adapter = this.theadapter
 
 
@@ -47,5 +47,9 @@ class CryptoListFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun onClickCrypto(crypto: Crypto) {
+        findNavController().navigate(R.id.action_cryptolistfrag_to_cryptodetailfrag)
     }
 }

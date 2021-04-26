@@ -2,4 +2,5 @@
     <string name="app_name">ESIEA_Projet</string>
     <string name="logo_bitcoin">Logo Bitcoin</string>
     <string name="crypto_monnaies">Crypto-monnaies</string>
+    <string name="le_crypto_fragment">Le Crypto Fragment</string>
 </resources>

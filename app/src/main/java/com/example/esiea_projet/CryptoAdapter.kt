@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CryptoAdapter(private var dataSet: List<Crypto>) :
+class CryptoAdapter(private var dataSet: List<Crypto>, var listener: ((Crypto) -> Unit)? = null) :
         RecyclerView.Adapter<CryptoAdapter.ViewHolder>() {
 
 
@@ -30,6 +30,7 @@ class CryptoAdapter(private var dataSet: List<Crypto>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val thecrypto = dataSet[position]
         viewHolder.textView.text = thecrypto.name
+        viewHolder.itemView.setOnClickListener{ listener?.invoke(thecrypto) }
     }
 
     override fun getItemCount() = dataSet.size
