@@ -3,4 +3,12 @@
     <string name="logo_bitcoin">Logo Bitcoin</string>
     <string name="crypto_monnaies">Crypto-monnaies</string>
     <string name="le_crypto_fragment">Le Crypto Fragment</string>
+    <string name="nom_symbole">Nom(SYMBOLE)</string>
+    <string name="nb_nbtotal">Nb/NbTotal</string>
+    <string name="retour">Retour</string>
+    <string name="prix_mcap">Prix+MCap</string>
+    <string name="change24_change7">Change24+Change7</string>
+    <string name="prix">Prix</string>
+    <string name="nom_crypto">Nom Crypto</string>
+    <string name="r">R</string>
 </resources>

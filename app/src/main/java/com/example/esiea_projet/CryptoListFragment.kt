@@ -30,7 +30,6 @@ class CryptoListFragment : Fragment() {
         therecycler.layoutManager = LinearLayoutManager(context)
         therecycler.adapter = this.theadapter
 
-
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.coinlore.net/api/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -50,8 +49,16 @@ class CryptoListFragment : Fragment() {
     }
 
     private fun onClickCrypto(crypto: Crypto) {
-        val symbol = crypto.symbol
-        val action = CryptoListFragmentDirections.actionCryptolistfragToCryptodetailfrag(symbol)
+        val cSymbol = crypto.symbol
+        val cName = crypto.name
+        val cRank = crypto.rank.toString()
+        val cUsd = crypto.price_usd
+        val cChange24 = crypto.percent_change_24h
+        val cChange7 = crypto.percent_change_7d
+        val cMcap = crypto.market_cap_usd
+        val cTsupply = crypto.tsupply
+        val cMsupply = crypto.msupply
+        val action = CryptoListFragmentDirections.actionCryptolistfragToCryptodetailfrag(cSymbol, cName, cRank, cUsd, cChange24, cChange7, cMcap, cTsupply, cMsupply)
         findNavController().navigate(action)
     }
 }

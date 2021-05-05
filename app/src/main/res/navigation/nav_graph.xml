@@ -25,7 +25,31 @@
             android:id="@+id/action_cryptodetailfrag_to_cryptolistfrag"
             app:destination="@id/cryptolistfrag" />
         <argument
-            android:name="argSymbol"
+            android:name="cSymbol"
+            app:argType="string" />
+        <argument
+            android:name="cName"
+            app:argType="string" />
+        <argument
+            android:name="cRank"
+            app:argType="string" />
+        <argument
+            android:name="cUsd"
+            app:argType="string" />
+        <argument
+            android:name="cChange24"
+            app:argType="string" />
+        <argument
+            android:name="cChange7"
+            app:argType="string" />
+        <argument
+            android:name="cMcap"
+            app:argType="string" />
+        <argument
+            android:name="cTsupply"
+            app:argType="string" />
+        <argument
+            android:name="cMsupply"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CryptoAdapter(private var dataSet: List<Crypto>, var listener: ((Crypto) -> Unit)? = null) : RecyclerView.Adapter<CryptoAdapter.ViewHolder>() {
 
-
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+        val tvCRank: TextView
+        val tvCName: TextView
+        val tvCPrice: TextView
         init {
-            textView = view.findViewById(R.id.tvCrypto)
+            tvCRank = view.findViewById(R.id.tv_Crypto_Rank)
+            tvCName = view.findViewById(R.id.tv_Crypto_Name)
+            tvCPrice = view.findViewById(R.id.tv_Crypto_Price)
         }
     }
 
@@ -28,7 +31,9 @@ class CryptoAdapter(private var dataSet: List<Crypto>, var listener: ((Crypto) -
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val thecrypto = dataSet[position]
-        viewHolder.textView.text = thecrypto.name
+        viewHolder.tvCRank.text = thecrypto.rank.toString()
+        viewHolder.tvCName.text = thecrypto.name
+        viewHolder.tvCPrice.text = thecrypto.price_usd.plus("$")
         viewHolder.itemView.setOnClickListener{ listener?.invoke(thecrypto) }
     }
 
