@@ -13,3 +13,5 @@ class MainActivity : AppCompatActivity() {
 
 // https://api.coinlore.net/api/tickers/?limit=20
 // https://docs.google.com/presentation/d/13CBQEt7lMj0IBils_y9FEZ87bIrYZLuVBzqz1VpRmaw/edit#slide=id.g44288c70b5_0_22
+// https://www.youtube.com/watch?v=i3nRZEbkWks
+// https://developer.android.com/guide/navigation/navigation-pass-data#kotlin

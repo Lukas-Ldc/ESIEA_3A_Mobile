@@ -24,5 +24,8 @@
         <action
             android:id="@+id/action_cryptodetailfrag_to_cryptolistfrag"
             app:destination="@id/cryptolistfrag" />
+        <argument
+            android:name="argSymbol"
+            app:argType="string" />
     </fragment>
 </navigation>

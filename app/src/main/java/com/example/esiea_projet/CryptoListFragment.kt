@@ -38,7 +38,7 @@ class CryptoListFragment : Fragment() {
 
         val cryptoAPI: CryptoAPI = retrofit.create(CryptoAPI::class.java)
 
-        cryptoAPI.getCryptoList("20").enqueue(object: Callback<CoinLoreResponse> {
+        cryptoAPI.getCryptoList("30").enqueue(object: Callback<CoinLoreResponse> {
             override fun onFailure(call: Call<CoinLoreResponse>, t: Throwable) {}
             override fun onResponse(call: Call<CoinLoreResponse>, response: Response<CoinLoreResponse>) {
                 if (response.isSuccessful && response.body() != null) {
@@ -50,6 +50,8 @@ class CryptoListFragment : Fragment() {
     }
 
     private fun onClickCrypto(crypto: Crypto) {
-        findNavController().navigate(R.id.action_cryptolistfrag_to_cryptodetailfrag)
+        val symbol = crypto.symbol
+        val action = CryptoListFragmentDirections.actionCryptolistfragToCryptodetailfrag(symbol)
+        findNavController().navigate(action)
     }
 }

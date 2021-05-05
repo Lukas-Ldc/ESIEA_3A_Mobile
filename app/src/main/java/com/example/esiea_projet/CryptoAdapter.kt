@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CryptoAdapter(private var dataSet: List<Crypto>, var listener: ((Crypto) -> Unit)? = null) :
-        RecyclerView.Adapter<CryptoAdapter.ViewHolder>() {
+class CryptoAdapter(private var dataSet: List<Crypto>, var listener: ((Crypto) -> Unit)? = null) : RecyclerView.Adapter<CryptoAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -23,7 +22,7 @@ class CryptoAdapter(private var dataSet: List<Crypto>, var listener: ((Crypto) -
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.crypto_item, viewGroup, false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.crypto_list_item, viewGroup, false)
         return ViewHolder(view)
     }
 
