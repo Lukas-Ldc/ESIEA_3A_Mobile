@@ -12,4 +12,4 @@ class MainActivity : AppCompatActivity() {
 }
 
 // https://api.coinlore.net/api/tickers/?limit=30
-// https://docs.google.com/presentation/d/13CBQEt7lMj0IBils_y9FEZ87bIrYZLuVBzqz1VpRmaw/edit#slide=id.g44288c70b5_0_22
+// https://docs.google.com/presentation/d/13CBQEt7lMj0IBils_y9FEZ87bIrYZLuVBzqz1VpRmaw/

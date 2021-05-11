@@ -1,5 +1,7 @@
 package com.example.esiea_projet
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Type
 
 class CryptoListFragment : Fragment() {
 
@@ -30,6 +35,14 @@ class CryptoListFragment : Fragment() {
         therecycler.layoutManager = LinearLayoutManager(context)
         therecycler.adapter = this.theadapter
 
+        try {
+            val cryptoList = getListFromCache()
+            if (cryptoList.isEmpty()) { getListFromAPI() }
+            else { theadapter.updater(getListFromCache()) }
+        } catch (e: java.lang.NullPointerException) { getListFromAPI() }
+    }
+
+    private fun getListFromAPI() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.coinlore.net/api/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -42,10 +55,28 @@ class CryptoListFragment : Fragment() {
             override fun onResponse(call: Call<CoinLoreResponse>, response: Response<CoinLoreResponse>) {
                 if (response.isSuccessful && response.body() != null) {
                     val coinLoreResponse = response.body()!!
+                    saveListInCache(coinLoreResponse.data)
                     theadapter.updater(coinLoreResponse.data)
                 }
             }
         })
+    }
+
+    private fun saveListInCache(cList: List<Crypto>) {
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("shared preferences", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(cList)
+        editor.putString("crypto", json)
+        editor.apply()
+    }
+
+    private fun getListFromCache(): List<Crypto> {
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("shared preferences", MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("crypto", null)
+        val type: Type = object : TypeToken<ArrayList<Crypto?>?>() {}.type
+        return gson.fromJson(json, type)
     }
 
     private fun onClickCrypto(crypto: Crypto) {
