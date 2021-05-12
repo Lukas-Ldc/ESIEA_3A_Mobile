@@ -35,6 +35,7 @@ class CryptoListFragment : Fragment() {
         therecycler.layoutManager = LinearLayoutManager(context)
         therecycler.adapter = this.theadapter
 
+        getListFromAPI()
         try {
             val cryptoList = getListFromCache()
             if (cryptoList.isEmpty()) { getListFromAPI() }

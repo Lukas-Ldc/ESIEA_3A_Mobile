@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 
 class CryptoDetailFragment : Fragment () {
 
@@ -34,5 +36,12 @@ class CryptoDetailFragment : Fragment () {
         tvkButton.setOnClickListener {
             findNavController().navigate(R.id.action_cryptodetailfrag_to_cryptolistfrag)
         }
+
+        val imgV: ImageView = view.findViewById(R.id.img_UCrypto)
+        Glide
+            .with(view)
+            .load("https://cryptoicons.org/api/icon/${args.cSymbol.toLowerCase()}/200")
+            .centerCrop()
+            .into(imgV)
     }
 }
