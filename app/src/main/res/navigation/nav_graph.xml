@@ -13,7 +13,9 @@
         tools:layout="@layout/crypto_list">
         <action
             android:id="@+id/action_cryptolistfrag_to_cryptodetailfrag"
-            app:destination="@id/cryptodetailfrag" />
+            app:destination="@id/cryptodetailfrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 
     <fragment
@@ -23,7 +25,9 @@
         tools:layout="@layout/crypto_detail">
         <action
             android:id="@+id/action_cryptodetailfrag_to_cryptolistfrag"
-            app:destination="@id/cryptolistfrag" />
+            app:destination="@id/cryptolistfrag"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <argument
             android:name="cSymbol"
             app:argType="string" />
@@ -47,9 +51,6 @@
             app:argType="string" />
         <argument
             android:name="cTsupply"
-            app:argType="string" />
-        <argument
-            android:name="cMsupply"
             app:argType="string" />
     </fragment>
 </navigation>

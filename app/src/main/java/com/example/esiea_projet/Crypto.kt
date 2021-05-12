@@ -9,5 +9,4 @@ data class Crypto(
         val percent_change_7d: String,
         val market_cap_usd: String,
         val tsupply: String,
-        val msupply: String
 )

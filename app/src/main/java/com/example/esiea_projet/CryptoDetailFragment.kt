@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import java.util.*
 
 class CryptoDetailFragment : Fragment () {
 
@@ -30,7 +31,7 @@ class CryptoDetailFragment : Fragment () {
         tvkTop.text = args.cName.plus("(").plus(args.cSymbol).plus(")")
         tvkPrice.text = args.cUsd.plus("$\n").plus(args.cMcap).plus("$ MCap")
         tvkChange.text = args.cChange24.plus("% sur 24h\n").plus(args.cChange7).plus("% sur 7 jours")
-        tvkSupply.text = args.cTsupply.plus("/").plus(args.cMsupply).plus(" unités")
+        tvkSupply.text = args.cTsupply.plus(" unités")
 
         val tvkButton: Button = view.findViewById(R.id.bt_UCrypto_Retour)
         tvkButton.setOnClickListener {
@@ -40,7 +41,7 @@ class CryptoDetailFragment : Fragment () {
         val imgV: ImageView = view.findViewById(R.id.img_UCrypto)
         Glide
             .with(view)
-            .load("https://cryptoicons.org/api/icon/${args.cSymbol.toLowerCase()}/200")
+            .load("https://cryptoicons.org/api/icon/${args.cSymbol.toLowerCase(Locale.ROOT)}/200")
             .centerCrop()
             .into(imgV)
     }

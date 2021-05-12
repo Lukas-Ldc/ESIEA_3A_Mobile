@@ -88,9 +88,10 @@ class CryptoListFragment : Fragment() {
         val cChange24 = crypto.percent_change_24h
         val cChange7 = crypto.percent_change_7d
         val cMcap = crypto.market_cap_usd
-        val cTsupply = crypto.tsupply
-        val cMsupply = crypto.msupply
-        val action = CryptoListFragmentDirections.actionCryptolistfragToCryptodetailfrag(cSymbol, cName, cRank, cUsd, cChange24, cChange7, cMcap, cTsupply, cMsupply)
+        var cTsupply = crypto.tsupply
+        try { if (cTsupply.isEmpty()) { cTsupply = "?" } }
+        catch (e: java.lang.NullPointerException) { cTsupply = "?" }
+        val action = CryptoListFragmentDirections.actionCryptolistfragToCryptodetailfrag(cSymbol, cName, cRank, cUsd, cChange24, cChange7, cMcap, cTsupply)
         findNavController().navigate(action)
     }
 }
